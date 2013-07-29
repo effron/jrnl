@@ -13,11 +13,18 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
     this.postsListView = new Jrnl.Views.PostsIndexView({
       collection: this.collection
     });
+    this.prevPostDetailView;
   },
 
   index: function() {
+    var that = this;
     this.$sidebar.html(this.postsListView.render().$el);
-    this.$contents.html("");
+    if(this.prevPostDetailView) {
+      var rendered = this.prevPostDetailView.render().$el;
+      rendered.fadeOut("slow", function(){
+        that.$contents.html("");
+      });
+    }
   },
 
   show: function(id) {
@@ -26,8 +33,12 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
       model: postModel,
       collection: this.collection
     });
+    this.prevPostDetailView = postDetailView;
+
     this.$sidebar.html(this.postsListView.render().$el);
-    this.$contents.html(postDetailView.render().$el);
+    var rendered = postDetailView.render().$el;
+    rendered.hide().fadeIn();
+    this.$contents.html(rendered);
   },
 
   new: function() {

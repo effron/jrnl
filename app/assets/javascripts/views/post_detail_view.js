@@ -6,7 +6,7 @@ Jrnl.Views.PostDetailView = Backbone.View.extend({
   },
   render: function() {
     var that = this;
-    this.$el.html(that.template({post: that.model}));
+    that.$el.html(that.template({post: that.model}));
     return this;
   },
 
