@@ -1,0 +1,5 @@
+<% _.each(posts.models,function(post){ %>
+  <li data-id="<%= post.escape("id") %>"><%= post.escape("title") %>
+    <button class="delete-post" data-id="<%= post.escape("id") %>">Delete Post</button>
+  </li>
+<% }); %>
