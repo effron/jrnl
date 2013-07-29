@@ -1,1 +1,3 @@
-Jrnl.Models.Post = Backbone.Model.extend({});
+Jrnl.Models.Post = Backbone.Model.extend({
+
+});

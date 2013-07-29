@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update_attributes
+    if @post.update_attributes(params[:post])
       respond_with(@post)
     else
       respond_with(@post, status: 422)

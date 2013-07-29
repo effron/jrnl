@@ -1,7 +1,9 @@
 Jrnl.Routers.PostsRouter = Backbone.Router.extend({
   routes: {
     "" : "index",
-    "posts/:id": "show"
+    "posts/new" : "new",
+    "posts/:id" : "show",
+    "posts/:id/edit" : "edit"
   },
 
   initialize: function($rootEl, posts) {
@@ -21,7 +23,24 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
     var postDetailView = new Jrnl.Views.PostDetailView({
       model: postModel
     });
-    console.log(postModel);
     this.$rootEl.html(postDetailView.render().$el);
+  },
+
+  new: function() {
+    var postModel = new Jrnl.Models.Post();
+    postModel.url = "/posts"
+    var postFormView = new Jrnl.Views.PostFormView({
+      model: postModel,
+      collection: this.collection
+    });
+    this.$rootEl.html(postFormView.render().$el);
+  },
+
+  edit: function(id) {
+    var postModel = this.collection.findWhere({id: parseInt(id)});
+    var postFormView = new Jrnl.Views.PostFormView({
+      model: postModel
+    });
+    this.$rootEl.html(postFormView.render().$el);
   }
 });
