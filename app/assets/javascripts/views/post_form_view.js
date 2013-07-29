@@ -39,7 +39,10 @@ Jrnl.Views.PostFormView = Backbone.View.extend({
     if (this.model.isNew()){
       this.collection.create(formObject, {
         success: success,
-        error: error,
+        error: function(model, xhr, options){
+          error(model, xhr, options);
+          that.collection.pop()
+        },
       })
     }
     else {

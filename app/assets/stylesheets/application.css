@@ -78,6 +78,21 @@ a:hover {
   padding-bottom: 15px;
 }
 
+.new-post{
+  display:block;
+  border: 1px solid black;
+  padding: 5px;
+  margin-top: 20px;
+  border-radius: 5px;
+  background-color: #E5F5E0;
+  color: blue;
+  text-decoration: none;
+}
+
+.new-post:hover{
+  background-color: #3BB07D;
+}
+
 #main-header {
   text-align: center;
 }
