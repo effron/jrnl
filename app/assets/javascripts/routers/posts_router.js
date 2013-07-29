@@ -10,13 +10,13 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
     this.$sidebar = $sidebar;
     this.$contents = $contents;
     this.collection = new Jrnl.Collections.Posts(posts);
+    this.postsListView = new Jrnl.Views.PostsIndexView({
+      collection: this.collection
+    });
   },
 
   index: function() {
-    var postsListView = new Jrnl.Views.PostsIndexView({
-      collection: this.collection
-    });
-    this.$sidebar.html(postsListView.render().$el);
+    this.$sidebar.html(this.postsListView.render().$el);
     this.$contents.html("");
   },
 
@@ -26,6 +26,7 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
       model: postModel,
       collection: this.collection
     });
+    this.$sidebar.html(this.postsListView.render().$el);
     this.$contents.html(postDetailView.render().$el);
   },
 
@@ -36,6 +37,7 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
       model: postModel,
       collection: this.collection
     });
+    this.$sidebar.html(this.postsListView.render().$el);
     this.$contents.html(postFormView.render().$el);
   },
 
@@ -44,6 +46,7 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
     var postFormView = new Jrnl.Views.PostFormView({
       model: postModel
     });
+    this.$sidebar.html(this.postsListView.render().$el);
     this.$contents.html(postFormView.render().$el);
   }
 });

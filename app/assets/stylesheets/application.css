@@ -12,8 +12,30 @@
  *= require_tree .
  */
 
+html, body, div, span, applet, object, iframe,
+ h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
+  overflow:hidden;
 }
 
 h1 {
@@ -28,6 +50,9 @@ button, .edit-button {
   color: white;
 }
 
+.delete-post:hover {
+  background-color: #913430;
+}
 button:hover, .edit-button:hover {
   background-color: #2B5882;
 }
@@ -38,6 +63,9 @@ a:hover {
 
 
 .sidebar {
+
+  margin-bottom: 5000px;
+  padding-bottom: 5000px;
   float: left;
   padding-right: 50px;
 }
@@ -46,6 +74,31 @@ a:hover {
   margin: auto;
 }
 
+.post-body{
+  padding-bottom: 15px;
+}
+
 #main-header {
   text-align: center;
+}
+
+#title, #body{
+  display: block;
+  width: 300px;
+  padding: 5px;
+  margin: 5px;
+  border-radius: 5px;
+  border-style: inset;
+  border-width: 3px;
+
+}
+
+#title:focus, #body:focus{
+  outline: none;
+  background-color: #B3E6D6;
+}
+
+#body{
+  height: 50px;
+  width: 300px;
 }
