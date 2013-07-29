@@ -6,8 +6,9 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
     "posts/:id/edit" : "edit"
   },
 
-  initialize: function($rootEl, posts) {
-    this.$rootEl = $rootEl;
+  initialize: function($sidebar, $contents, posts) {
+    this.$sidebar = $sidebar;
+    this.$contents = $contents;
     this.collection = new Jrnl.Collections.Posts(posts);
   },
 
@@ -15,15 +16,17 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
     var postsListView = new Jrnl.Views.PostsIndexView({
       collection: this.collection
     });
-    this.$rootEl.html(postsListView.render().$el);
+    this.$sidebar.html(postsListView.render().$el);
+    this.$contents.html("");
   },
 
   show: function(id) {
     var postModel = this.collection.findWhere({id: parseInt(id)});
     var postDetailView = new Jrnl.Views.PostDetailView({
-      model: postModel
+      model: postModel,
+      collection: this.collection
     });
-    this.$rootEl.html(postDetailView.render().$el);
+    this.$contents.html(postDetailView.render().$el);
   },
 
   new: function() {
@@ -33,7 +36,7 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
       model: postModel,
       collection: this.collection
     });
-    this.$rootEl.html(postFormView.render().$el);
+    this.$contents.html(postFormView.render().$el);
   },
 
   edit: function(id) {
@@ -41,6 +44,6 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
     var postFormView = new Jrnl.Views.PostFormView({
       model: postModel
     });
-    this.$rootEl.html(postFormView.render().$el);
+    this.$contents.html(postFormView.render().$el);
   }
 });

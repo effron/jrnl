@@ -32,9 +32,10 @@ Jrnl.Views.PostFormView = Backbone.View.extend({
     };
 
     var success = function(model){
+      console.log(that.collection);
       Backbone.history.navigate("#/posts/" + model.id);
     }
-    console.log(this.model.isNew());
+
     if (this.model.isNew()){
       this.collection.create(formObject, {
         success: success,

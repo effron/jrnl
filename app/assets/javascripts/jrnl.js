@@ -3,8 +3,8 @@ window.Jrnl = {
   Collections: {},
   Views: {},
   Routers: {},
-  initialize: function($rootEl, posts) {
-    new Jrnl.Routers.PostsRouter($rootEl, posts);
+  initialize: function($sidebar, $contents, posts) {
+    new Jrnl.Routers.PostsRouter($sidebar, $contents, posts);
     Backbone.history.start();
   }
 };

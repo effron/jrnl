@@ -1,12 +1,11 @@
 <h1> WELCOME TO JRNL </h1>
 
 
-<div id="tasks-list">
+<div class="sidebar">
 </div>
 
-
-
-
+<div class="contents">
+</div>
 
 <script type="application/json" id="bootstrapped_posts_json">
   <%= Post.all.to_json.html_safe %>
@@ -16,6 +15,6 @@
   $(function() {
     var posts = JSON.parse($("#bootstrapped_posts_json").html());
 
-    window.Jrnl.initialize($("#tasks-list"), posts);
+    window.Jrnl.initialize($(".sidebar"), $(".contents"), posts);
   })
 </script>
