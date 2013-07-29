@@ -11,3 +11,41 @@
  *= require_self
  *= require_tree .
  */
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+h1 {
+  padding:0px;
+}
+
+button, .edit-button {
+  background-color: #35194D;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 5px;
+  color: white;
+}
+
+button:hover, .edit-button:hover {
+  background-color: #2B5882;
+}
+
+a:hover {
+  color: #123036;
+}
+
+
+.sidebar {
+  float: left;
+  padding-right: 50px;
+}
+
+.contents {
+  margin: auto;
+}
+
+#main-header {
+  text-align: center;
+}
