@@ -36,25 +36,20 @@ Jrnl.Routers.PostsRouter = Backbone.Router.extend({
       collection: this.collection
     });
     
-    if (this.prevPostDetailView){
-      var fadeThisOut = this.prevPostDetailView.render().$el;
-      fadeThisOut.fadeOut("fast", function(){
-        that.$contents.html("");
-        that.prevPostDetailView = postDetailView;
+    var loadPost = function(){
+      that.prevPostDetailView = postDetailView;
 
-        that.$sidebar.html(that.postsListView.render().$el);
-        var rendered = postDetailView.render().$el;
-        rendered.hide().fadeIn();
-        that.$contents.html(rendered);
-      });
-    }
-    else{ 
-      this.prevPostDetailView = postDetailView;
-
-      this.$sidebar.html(that.postsListView.render().$el);
+      that.$sidebar.html(that.postsListView.render().$el);
       var rendered = postDetailView.render().$el;
       rendered.hide().fadeIn();
-      this.$contents.html(rendered);
+      that.$contents.html(rendered);
+    }
+    if (this.prevPostDetailView){
+      var fadeThisOut = this.prevPostDetailView.render().$el;
+      fadeThisOut.fadeOut("fast", loadPost);
+    }
+    else{ 
+      loadPost();
     }
   },
 
