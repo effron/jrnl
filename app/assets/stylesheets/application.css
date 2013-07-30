@@ -85,12 +85,18 @@ a:hover {
   margin-top: 20px;
   border-radius: 5px;
   background-color: #E5F5E0;
-  color: blue;
+  color: #122B36;
   text-decoration: none;
+  text-align: center;
 }
 
 .new-post:hover{
   background-color: #3BB07D;
+}
+
+.new-post:active{
+  background-color: #122B36;
+  color: #3BB07D;
 }
 
 #main-header {
