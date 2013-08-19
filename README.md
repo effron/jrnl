@@ -1,4 +1,5 @@
-== Welcome to JRNL
+Welcome to JRNL
+===============
 
 Jrnl is a single page journal app made using Backbone.JS on top of a Ruby on Rails API.
 Jrnl was created for App Academy, Week 7 Day 1 coursework.
